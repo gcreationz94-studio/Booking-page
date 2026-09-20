@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book a Photo Session · G creationz photography</title>
+<meta name="description" content="Book a portrait, family, maternity, event, corporate or product photography session.">
+<meta name="theme-color" content="#F6F5F2">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Italiana&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F6F5F2;
+  --sheet:#FFFFFF;
+  --ink:#25272A;
+  --muted:#65686C;
+  --line:#DAD8D3;
+  --edge:#8B8D8F;
+  --champagne:#B99C6B;
+  --tint:#F0EBE1;
+  --display:"Italiana",Georgia,"Times New Roman",serif;
+  --body:"Jost",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 16px/1.6 var(--body)}
+
+.page{max-width:720px;margin:0 auto;padding:24px 24px 88px}
+.top{display:flex;justify-content:space-between;align-items:baseline;gap:8px 16px;flex-wrap:wrap;font-weight:500}
+.top a{color:var(--muted);text-underline-offset:4px}
+.top a:hover{color:var(--ink)}
+.top a:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+
+h1{
+  font-family:var(--display);font-weight:400;
+  font-size:clamp(44px,10vw,80px);line-height:1.04;letter-spacing:.01em;
+  margin:72px 0 20px
+}
+.lede{max-width:46ch;font-size:18px;margin:0 0 56px;color:var(--muted)}
+
+/* Sections: whitespace first, one hairline between them */
+fieldset{border:0;padding:0;margin:0 0 48px;min-width:0}
+fieldset + fieldset{border-top:1px solid var(--line);padding-top:44px}
+legend{float:left;width:100%;padding:0;margin:0 0 24px;font-family:var(--display);font-weight:400;font-size:clamp(26px,5vw,32px);line-height:1.2}
+legend + *{clear:both}
+
+/* Session type */
+.tiles{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.tile{position:relative;display:block}
+.tile input,.seg input{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:pointer;z-index:1}
+.tile-body{position:relative;display:block;min-height:88px;padding:16px 40px 16px 18px;border:1px solid var(--edge);background:var(--sheet);transition:border-color .15s,background-color .15s}
+.tile:hover .tile-body{border-color:var(--ink)}
+.tile-title{display:block;font-weight:500;font-size:17px;line-height:1.3}
+.tile-hint{display:block;margin-top:4px;font-size:14px;line-height:1.4;color:var(--muted)}
+.tile input:checked + .tile-body{border-color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink);background:var(--tint)}
+.tile input:checked + .tile-body .tile-hint{color:var(--ink)}
+.tile input:checked + .tile-body::after{content:"\2713";position:absolute;top:14px;right:16px;font-size:15px;line-height:1}
+.tile input:focus-visible + .tile-body,.seg input:focus-visible + span{outline:2px solid var(--ink);outline-offset:3px}
+
+/* Fields: label above, line below */
+.row{display:grid;grid-template-columns:1fr 1fr;gap:0 32px}
+.field{display:flex;flex-direction:column;margin-bottom:26px}
+.lbl,label.lbl{font-weight:500;font-size:14px;margin-bottom:2px}
+.opt{font-weight:400;color:var(--muted)}
+.hint{font-size:14px;color:var(--muted);margin-top:6px}
+.control{width:100%;min-height:46px;padding:10px 0;border:0;border-bottom:1px solid var(--edge);border-radius:0;background-color:transparent;color:var(--ink);font:inherit}
+.control::placeholder{color:#7A7D80}
+textarea.control{min-height:96px;resize:vertical}
+.control:focus{outline:none;border-bottom-color:var(--ink);box-shadow:0 1px 0 0 var(--ink)}
+.control:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+select.control{
+  -webkit-appearance:none;appearance:none;padding-right:26px;cursor:pointer;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%2325272A' stroke-width='1.5'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 2px center
+}
+
+.seg{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px}
+.seg label{position:relative;display:block}
+.seg span{display:block;padding:11px 18px;border:1px solid var(--edge);background:var(--sheet);transition:border-color .15s,background-color .15s}
+.seg label:hover span{border-color:var(--ink)}
+.seg input:checked + span{border-color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink);background:var(--tint);font-weight:500}
+
+/* Submit */
+.cta{width:100%;min-height:58px;border:0;background:var(--ink);color:#fff;font:500 17px/1 var(--body);letter-spacing:.02em;cursor:pointer;transition:background-color .15s}
+.cta:hover{background:#3B3E42}
+.cta:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.note{margin:14px 0 0;font-size:14px;color:var(--muted)}
+.status{display:none;margin-top:20px;padding:14px 16px;border-left:3px solid var(--champagne);background:var(--tint)}
+.status.show{display:block}
+.status a{color:var(--ink);font-weight:500;text-underline-offset:3px}
+
+@media(min-width:640px){
+  .tiles{grid-template-columns:repeat(3,1fr)}
+  .tile:last-child{grid-column:1/-1}
+}
+@media(max-width:600px){
+  .row{grid-template-columns:1fr}
+  h1{margin-top:56px}
+}
+@media(prefers-reduced-motion:reduce){
+  .tile-body,.seg span,.cta{transition:none}
+}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="top">
+    <span>G creationz photography</span>
+    <a href="index.html">Booking a wedding?</a>
+  </div>
+
+  <h1>Book a photo session</h1>
+  <p class="lede">Pick the kind of shoot, tell us when and where, and send it to us on WhatsApp. We'll reply to confirm the date and price.</p>
+
+  <form id="bookingForm">
+
+    <fieldset>
+      <legend>What are we shooting?</legend>
+      <div class="tiles">
+        <label class="tile">
+          <input type="radio" name="session" value="Wedding" required>
+          <span class="tile-body"><span class="tile-title">Wedding</span><span class="tile-hint">Ceremony, pre-wedding, reception</span></span>
+        </label>
+        <label class="tile">
+          <input type="radio" name="session" value="Portrait" required>
+          <span class="tile-body"><span class="tile-title">Portrait</span><span class="tile-hint">Solo, personal, creative</span></span>
+        </label>
+        <label class="tile">
+          <input type="radio" name="session" value="Family" required>
+          <span class="tile-body"><span class="tile-title">Family</span><span class="tile-hint">Parents, kids, generations</span></span>
+        </label>
+        <label class="tile">
+          <input type="radio" name="session" value="Couple" required>
+          <span class="tile-body"><span class="tile-title">Couple</span><span class="tile-hint">Anniversaries, couple portraits</span></span>
+        </label>
+        <label class="tile">
+          <input type="radio" name="session" value="Maternity & newborn" required>
+          <span class="tile-body"><span class="tile-title">Maternity &amp; newborn</span><span class="tile-hint">Bump, baby, first weeks</span></span>
+        </label>
+        <label class="tile">
+          <input type="radio" name="session" value="Birthday & events" required>
+          <span class="tile-body"><span class="tile-title">Birthday &amp; events</span><span class="tile-hint">Parties, functions, gatherings</span></span>
+        </label>
+        <label class="tile">
+          <input type="radio" name="session" value="Corporate" required>
+          <span class="tile-body"><span class="tile-title">Corporate</span><span class="tile-hint">Headshots, teams, conferences</span></span>
+        </label>
+        <label class="tile">
+          <input type="radio" name="session" value="Product & brand" required>
+          <span class="tile-body"><span class="tile-title">Product &amp; brand</span><span class="tile-hint">Catalogue, food, e-commerce</span></span>
+        </label>
+        <label class="tile">
+          <input type="radio" name="session" value="Fashion & portfolio" required>
+          <span class="tile-body"><span class="tile-title">Fashion &amp; portfolio</span><span class="tile-hint">Models, lookbooks, actors</span></span>
+        </label>
+        <label class="tile">
+          <input type="radio" name="session" value="Something else" required>
+          <span class="tile-body"><span class="tile-title">Something else</span><span class="tile-hint">Describe it below</span></span>
+        </label>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>When and where</legend>
+
+      <div class="row">
+        <div class="field">
+          <label class="lbl" for="date">Date</label>
+          <input class="control" id="date" name="date" type="date" required>
+        </div>
+        <div class="field">
+          <label class="lbl" for="backup">Backup date <span class="opt">(optional)</span></label>
+          <input class="control" id="backup" name="backup" type="date">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="field">
+          <label class="lbl" for="tod">Time of day</label>
+          <select class="control" id="tod" name="tod">
+            <option>Flexible</option>
+            <option>Morning</option>
+            <option>Afternoon</option>
+            <option>Golden hour (evening)</option>
+          </select>
+        </div>
+        <div class="field">
+          <label class="lbl" for="length">Session length</label>
+          <select class="control" id="length" name="length">
+            <option>Not sure yet</option>
+            <option>1 hour</option>
+            <option>2 hours</option>
+            <option>Half day (about 4 hours)</option>
+            <option>Full day</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="field" role="radiogroup" aria-labelledby="whereLabel">
+        <span class="lbl" id="whereLabel">Where should we shoot?</span>
+        <div class="seg">
+          <label><input type="radio" name="where" value="In the studio" required><span>In the studio</span></label>
+          <label><input type="radio" name="where" value="Outdoors" required><span>Outdoors</span></label>
+          <label><input type="radio" name="where" value="At my place or venue" required><span>At my place or venue</span></label>
+          <label><input type="radio" name="where" value="Not sure" required><span>Not sure</span></label>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="field">
+          <label class="lbl" for="location">Venue or area</label>
+          <input class="control" id="location" name="location" placeholder="Venue, neighbourhood or city" aria-describedby="locHint">
+          <span class="hint" id="locHint">Needed for outdoor and on-site shoots.</span>
+        </div>
+        <div class="field">
+          <label class="lbl" for="people">Number of people <span class="opt">(optional)</span></label>
+          <input class="control" id="people" name="people" type="number" min="1" inputmode="numeric" placeholder="e.g. 4">
+        </div>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Anything else?</legend>
+      <div class="field">
+        <label class="lbl" for="message">Ideas, references or deadlines <span class="opt">(optional)</span></label>
+        <textarea class="control" id="message" name="message" placeholder="Outfits, mood, props, when you need the photos by"></textarea>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>How can we reach you?</legend>
+      <div class="row">
+        <div class="field">
+          <label class="lbl" for="name">Your name</label>
+          <input class="control" id="name" name="name" required autocomplete="name">
+        </div>
+        <div class="field">
+          <label class="lbl" for="phone">WhatsApp number</label>
+          <input class="control" id="phone" name="phone" type="tel" required autocomplete="tel" inputmode="tel" pattern="[0-9+()\s\-]{7,}" title="Enter a phone number with country code, for example +91 98765 43210" placeholder="+91 98765 43210">
+        </div>
+      </div>
+      <div class="field" style="margin-bottom:0">
+        <label class="lbl" for="email">Email <span class="opt">(optional)</span></label>
+        <input class="control" id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com">
+      </div>
+    </fieldset>
+
+    <button class="cta" type="submit">Send request on WhatsApp</button>
+    <p class="note">This opens WhatsApp with your details filled in. Nothing is booked until we confirm the date and price.</p>
+    <div id="status" class="status" role="status" aria-live="polite"></div>
+  </form>
+</div>
+
+<script>
+/* Studio WhatsApp number: country code + number, no + or spaces. */
+const WHATSAPP_NUMBER = "919715617043";
+
+const $ = id => document.getElementById(id);
+const form = $("bookingForm");
+
+/* Earliest bookable date is today, in the visitor's local time */
+const t = new Date();
+const pad = n => String(n).padStart(2, "0");
+const today = `${t.getFullYear()}-${pad(t.getMonth() + 1)}-${pad(t.getDate())}`;
+$("date").min = today;
+$("backup").min = today;
+
+/* Venue is required only when we have to travel or need to know the place */
+form.querySelectorAll('input[name="where"]').forEach(radio => {
+  radio.addEventListener("change", () => {
+    $("location").required = radio.value === "Outdoors" || radio.value === "At my place or venue";
+  });
+});
+
+function prettyDate(iso) {
+  if (!iso) return "";
+  const [y, m, d] = iso.split("-").map(Number);
+  return new Date(y, m - 1, d).toLocaleDateString("en-IN", {
+    weekday: "short", day: "numeric", month: "short", year: "numeric"
+  });
+}
+
+form.addEventListener("submit", function (e) {
+  e.preventDefault();
+  const f = new FormData(form);
+  const get = (key, fallback = "-") => (f.get(key) || "").toString().trim() || fallback;
+
+  const text = [
+    "*NEW PHOTOGRAPHY BOOKING REQUEST*",
+    "",
+    `*Name:* ${get("name")}`,
+    `*WhatsApp:* ${get("phone")}`,
+    `*Email:* ${get("email")}`,
+    "",
+    `*Session:* ${get("session")}`,
+    `*Date:* ${prettyDate(get("date", ""))}`,
+    `*Backup date:* ${prettyDate(get("backup", "")) || "-"}`,
+    `*Time of day:* ${get("tod")}`,
+    `*Length:* ${get("length")}`,
+    `*Where:* ${get("where")}`,
+    `*Venue or area:* ${get("location")}`,
+    `*People:* ${get("people")}`,
+    "",
+    `*Details:* ${get("message")}`
+  ].join("\n");
+
+  const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
+  window.open(url, "_blank");
+
+  const status = $("status");
+  status.textContent = "Opening WhatsApp with your request. Send the message there to finish. ";
+  const link = document.createElement("a");
+  link.href = url;
+  link.target = "_blank";
+  link.rel = "noopener";
+  link.textContent = "WhatsApp didn't open? Open it here.";
+  status.appendChild(link);
+  status.classList.add("show");
+});
+</script>
+</body>
+</html>
